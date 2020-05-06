@@ -8,6 +8,11 @@
 {% block content %}
     <h1>Books</h1>
 
+    <dialog class="infoDialog">
+        <div class="infoDialog__message"></div>
+        <button class="closeDialog">Close</button>
+    </dialog>
+
     <a href="{% url 'libraryapp:book_form' %}">Add Book to Inventory</a>
 
     <ol class="books">
@@ -17,7 +22,12 @@
             <div class="book__description">
                 by {{book.author}} published in {{book.year_published}}
             </div>
+            <button id="detail--{{ book.id }}">Details</button>
         </li>
     {% endfor %}
     </ol>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'scripts/books.js' %}"></script>
 {% endblock %}
